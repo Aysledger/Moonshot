@@ -14,7 +14,7 @@ struct ContentView: View {
   @AppStorage("showingGrid") private var showingGrid = true
   
   var body: some View {
-    NavigationView {
+    NavigationStack {
       Group {
         if showingGrid {
           GridLayout(astronauts: astronauts, missions: missions)
@@ -36,6 +36,9 @@ struct ContentView: View {
       .navigationTitle("Moonshot")
       .background(.darkBackground)
       .preferredColorScheme(.dark)
+      .navigationDestination(for: Mission.self) { mission in
+        MissionView(mission: mission, astronauts: astronauts)
+      }
     }
   }
 }
