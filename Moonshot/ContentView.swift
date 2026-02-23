@@ -35,6 +35,9 @@ struct ContentView: View {
           }
         }
       }
+      .navigationDestination(for: Mission.self) { mission in
+          MissionView(mission: mission, astronauts: astronauts)
+      }
     }
   }
 }
